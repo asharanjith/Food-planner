@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     @users = User.all
   end
@@ -10,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-    def new
+  def new
     @user = User.new
   end
 
@@ -23,10 +21,9 @@ class UsersController < ApplicationController
     end
   end
 
-    private
+  private
 
-    def user_params
-        params.require(:user).permit(:name, :email, :password)
-    end
-
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end
