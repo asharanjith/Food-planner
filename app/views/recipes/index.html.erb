@@ -4,7 +4,9 @@
 
 <div id="recipes">
   <% @recipes.each do |recipe| %>
-    <%= render recipe %>
+        <% if recipe.user == current_user || recipe.public == true %>
+            <%= render recipe %>
+        <% end %>
     <p>
       <%= link_to "Show this recipe", recipe %>
     </p>
