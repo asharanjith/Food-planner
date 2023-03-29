@@ -1,0 +1,51 @@
+<div id="<%= dom_id recipe %>" class="recipe">
+  <% if recipe.user == current_user %>
+    <%= link_to "Edit", edit_recipe_path(recipe) %>
+    <%= link_to "Destroy", recipe, method: :delete, data: { confirm: "Are you sure?" } %>
+    <div>
+    <%= form_with model: recipe, local: true do |form| %>
+      <%= form.label :public %>
+      <%= form.check_box :public %>
+      <%= form.submit "Change privacy status" %>
+    <% end %>
+    </div>
+  <% end %>
+  <p>
+    <strong>Name:</strong>
+    <%= recipe.name %>
+  </p>
+
+  <p>
+    <strong>Preparation time:</strong>
+    <%= recipe.preparation_time %>
+  </p>
+
+  <p>
+    <strong>Cooking time:</strong>
+    <%= recipe.cooking_time %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= recipe.description %>
+  </p>
+
+  <p>
+    <% if recipe.public
+      %>
+      <strong>Available to public:</strong>
+      Yes
+      <% else %>
+      <strong>Available to public:</strong>
+      No
+      <% end %>
+  </p>
+
+  <p>
+    <strong>Created by:</strong>
+    <%= recipe.user.name %>
+  </p>
+
+  
+
+</div>
