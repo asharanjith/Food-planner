@@ -5,6 +5,13 @@
 
     <h1> Public Recipes</h1>
 
+    <% if user_signed_in? %>
+    <p>
+    <%= link_to "My recipes", recipes_path %>
+    </p>
+    <% end %>
+    
+
     <div id="recipes">
     <% @recipes.each do |recipe| %>
         
