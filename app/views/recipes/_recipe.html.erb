@@ -1,4 +1,4 @@
-<div id="<%= dom_id recipe %>">
+<div id="<%= dom_id recipe %>" class="recipe">
   <% if recipe.user == current_user %>
     <%= link_to "Edit", edit_recipe_path(recipe) %>
     <%= link_to "Destroy", recipe, method: :delete, data: { confirm: "Are you sure?" } %>
@@ -31,13 +31,21 @@
   </p>
 
   <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
+    <% if recipe.public
+      %>
+      <strong>Available to public:</strong>
+      Yes
+      <% else %>
+      <strong>Available to public:</strong>
+      No
+      <% end %>
   </p>
 
   <p>
-    <strong>User:</strong>
+    <strong>Created by:</strong>
     <%= recipe.user.name %>
   </p>
+
+  
 
 </div>
