@@ -7,7 +7,7 @@
 <div id="recipes">
   <% @recipes.each do |recipe| %>
     
-        <% if recipe.user == current_user || recipe.public == true %>
+        <% if recipe.user == current_user %>
         <div class="recipeContainer">
             <%= render recipe %>
             <p>
