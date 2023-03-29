@@ -1,4 +1,15 @@
 <div id="<%= dom_id recipe %>">
+  <% if recipe.user == current_user %>
+    <%= link_to "Edit", edit_recipe_path(recipe) %>
+    <%= link_to "Destroy", recipe, method: :delete, data: { confirm: "Are you sure?" } %>
+    <div>
+    <%= form_with model: recipe, local: true do |form| %>
+      <%= form.label :public %>
+      <%= form.check_box :public %>
+      <%= form.submit "Change privacy status" %>
+    <% end %>
+    </div>
+  <% end %>
   <p>
     <strong>Name:</strong>
     <%= recipe.name %>
