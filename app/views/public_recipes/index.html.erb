@@ -2,15 +2,7 @@
  <h1>There is no public recipes yet</h1>
 <% else %>
     <p style="color: green"><%= notice %></p>
-
-    <h1> Public Recipes</h1>
-
-    <% if user_signed_in? %>
-    <p>
-    <%= link_to "My recipes", recipes_path %>
-    </p>
-    <% end %>
-    
+    <h1> Public Recipes</h1> 
 
     <div id="recipes">
     <% @recipes.each do |recipe| %>
@@ -22,8 +14,7 @@
                 <%= link_to "Show this recipe", recipe %>
                 </p>
                 </div>
-            <% end %>
-        
+            <% end %>       
         
     <% end %>
     </div>

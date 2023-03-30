@@ -5,6 +5,7 @@
         <h2>Food planner</h2>
         <% if user_signed_in? %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navLink" %>
+            <%= link_to "My recipes", recipes_path %>
             <%= link_to "Public recipes", root_path, class: "navLink" %>
         <% else %>
             <%= link_to "Sign in", user_session_path, class: "navLink" %>
@@ -12,3 +13,4 @@
 l        <% end %>
     </div>
 </nav>
+
