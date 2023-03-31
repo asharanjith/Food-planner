@@ -1,3 +1,4 @@
+
 <% if @recipes.length == 0 %>
  <h1>There is no public recipe yet</h1>
 <% else %>
@@ -13,5 +14,12 @@
     <% end %>
     </div>
 <% end %>
+
+<% if !user_signed_in? %>
+    <h4> Please <%= link_to "sign up", new_user_registration_path %> or <%= link_to "log in",user_session_path %>  to see the recipes </h4>
+<% end %>
+
+
+
 
 

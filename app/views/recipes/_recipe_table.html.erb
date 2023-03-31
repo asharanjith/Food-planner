@@ -12,7 +12,7 @@
   <% @recipes.each do |recipe| %>
     <% if recipe.user == current_user || recipe.public == true %>
     <tr>
-      <th scope="row"><%= recipe.name %></th>
+      <th scope="row"><%= link_to recipe.name, recipe_path(recipe) %></th>
       <td><%= recipe.preparation_time %></td>
       <td><%= recipe.cooking_time %></td>
       <td><%= recipe.user.name %></td>

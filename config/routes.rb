@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :recipes
   get 'public_recipes/index'
+  
 
 
 end
