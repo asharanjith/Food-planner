@@ -1,32 +1,25 @@
+
 <% if @recipes.length == 0 %>
- <h1>There is no public recipes yet</h1>
+ <h1>There is no public recipe yet</h1>
 <% else %>
-    <p style="color: green"><%= notice %></p>
-
-    <h1> Public Recipes</h1>
-
-    <% if user_signed_in? %>
-    <p>
-    <%= link_to "My recipes", recipes_path %>
-    </p>
-    <% end %>
-    
+    <h1> Public Recipes</h1> 
 
     <div id="recipes">
     <% @recipes.each do |recipe| %>
         
             <% if recipe.public == true %>
-            <div class="recipeContainer">
-                <%= render recipe %>
-                <p>
-                <%= link_to "Show this recipe", recipe %>
-                </p>
-                </div>
-            <% end %>
-        
+                <%= render partial: 'recipes/recipe_table' %>                
+            <% end %>       
         
     <% end %>
     </div>
 <% end %>
+
+<% if !user_signed_in? %>
+    <h4> Please <%= link_to "sign up", new_user_registration_path %> or <%= link_to "log in",user_session_path %>  to see the recipes </h4>
+<% end %>
+
+
+
 
 
