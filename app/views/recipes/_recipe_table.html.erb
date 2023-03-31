@@ -1,0 +1,27 @@
+<table class="table table-striped table-hover table-bordered text-center">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Prep Time</th>
+      <th scope="col">Cooking Time</th>
+      <th scope="col">Author</th>
+      <th scope="col" colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody class= "table-group-divider">
+  <% @recipes.each do |recipe| %>
+    <% if recipe.user == current_user %>
+    <tr>
+      <th scope="row"><%= recipe.name %></th>
+      <td><%= recipe.preparation_time %></td>
+      <td><%= recipe.cooking_time %></td>
+      <td><%= recipe.user.name %></td>
+      <td><%= link_to "Show", recipe_path(recipe),class: "btn btn-outline-info btn-sm"%>
+        <%= link_to "Edit", edit_recipe_path(recipe),class: "btn btn-outline-secondary btn-sm" %>
+        <%= link_to "Delete", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm"%>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

@@ -1,14 +1,17 @@
 <div id="<%= dom_id recipe %>" class="recipe">
   <% if recipe.user == current_user %>
-    <%= link_to "Edit", edit_recipe_path(recipe) %>
-    <%= link_to "Destroy", recipe, method: :delete, data: { confirm: "Are you sure?" } %>
     <div>
       <%= form_with model: recipe, local: true do |form| %>
       <div class="form-check form-switch">
+        <% if recipe.public == true %>
         <%= form.label :public  %>
+        <% else %>
+        <%= form.label :public, "private"  %>
+        <% end %>
         <%= form.check_box :public, role: "switch", class: "form-check-input", id: "flexSwitchCheckDefault"%>
-      </div>
-        <%= form.submit "Save" %>
+      
+        <%= form.submit "Save", class: "btn btn-secondary" %>
+        </div>
       <% end %>
     </div>
   <% end %>
