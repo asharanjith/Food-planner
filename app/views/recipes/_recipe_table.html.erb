@@ -10,15 +10,17 @@
   </thead>
   <tbody class= "table-group-divider">
   <% @recipes.each do |recipe| %>
-    <% if recipe.user == current_user %>
+    <% if recipe.user == current_user || recipe.public == true %>
     <tr>
       <th scope="row"><%= recipe.name %></th>
       <td><%= recipe.preparation_time %></td>
       <td><%= recipe.cooking_time %></td>
       <td><%= recipe.user.name %></td>
       <td><%= link_to "Show", recipe_path(recipe),class: "btn btn-outline-info btn-sm"%>
+        <% if recipe.user == current_user%>
         <%= link_to "Edit", edit_recipe_path(recipe),class: "btn btn-outline-secondary btn-sm" %>
         <%= link_to "Delete", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm"%>
+        <% end %>
       </td>
     </tr>
     <% end %>
